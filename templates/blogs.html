@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+{{bpost.slug}}
+{% endblock title %}
+{% block body %}
+{% load humanize %}
+<div class="container my-3 col-md-8">
+  <h2>{{bpost.orgName}} </h2>
+  <p>{{bpost.date}} </p>
+  <p> {{bpost.content|safe}} </p>
+</div>
+
+<form action="/handleApplication" method="post">
+{% csrf_token %}
+<input type="hidden" name="sno" value="{{ bpost.sno}}">
+
+<button type="submit"> apply </button>
+
+</form>
+
+
+{% endblock body %}
