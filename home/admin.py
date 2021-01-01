@@ -1,5 +1,5 @@
 from django.contrib import admin
-from home.models import Contact,Recruitment,Profile,Enrollment
+from home.models import Contact,Recruitment,Profile
 # Register your models here.
 @admin.register(Contact)
 class PostAdmin(admin.ModelAdmin):
@@ -10,4 +10,3 @@ class PostAdmin(admin.ModelAdmin):
     class Media:
         js=('tinyinject.js',)
 admin.site.register(Profile)
-admin.site.register(Enrollment)

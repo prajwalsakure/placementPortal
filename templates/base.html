@@ -1,80 +1,571 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    {% block head %}
-    {% endblock head %}
-    <title>
+<head>
+
+
+  {% load static %}
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {% block head %}
+
+  {% endblock head %}
+  <title>
     {% block title %}
-    {% endblock title %}placement portal 
-    
-    </title>
-  </head>
-  <style>
- 
+    {% endblock title %}placement portal
+
+  </title>
+</head>
+<style>
+  {
+    % block css %
+  }
+
+    {
+    % endblock css %
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+  }
+
+  body {
+    /* background: #000; */
+    min-height: 120vh;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    /* background-color: #000; */
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+  }
+
+  .sticky {
+    padding: 29px 81px;
+    background: rgb(135, 212, 209);
+    z-index: 100;
+    color: #000;
+  }
+
+
+  .sticky ul li a {
+    color: #000;
+  }
+
+  header .logo {
+    position: relative;
+    font-weight: 700;
+    color: rgb(135, 212, 209);
+    text-decoration: none;
+    font-size: 2em;
+    letter-spacing: 2px;
+    transition: 0.6s;
+
+  }
+
+  .sticky .logo {
+    color: #fff;
+  }
+
+  header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  header ul li {
+    position: relative;
+    list-style: none;
+  }
+
+  header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.5s;
+  }
+
+
+  /* footer */
+  .site-footer {
+    background-color: #26272b;
+    padding: 35px 0 17px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+  }
+
+  .site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+  }
+
+  .site-footer hr.small {
+    margin: 10px 0
+  }
+
+  .site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+  }
+
+  .site-footer a {
+    color: #737373;
+  }
+
+  .site-footer a:hover {
+    color: #3366cc;
+    text-decoration: none;
+  }
+
+  .footer-links {
+    padding-left: 0;
+    list-style: none
+  }
+
+  .footer-links li {
+    display: block
+  }
+
+  .footer-links a {
+    color: #737373
+  }
+
+  .footer-links a:active,
+  .footer-links a:focus,
+  .footer-links a:hover {
+    color: #3366cc;
+    text-decoration: none;
+  }
+
+  .footer-links.inline li {
+    display: inline-block
+  }
+
+  .site-footer .social-icons {
+    text-align: right
+  }
+
+  .site-footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 0;
+    border-radius: 100%;
+    background-color: #33353d
+  }
+
+  .copyright-text {
+    margin: 0
+  }
+
+  @media (max-width:991px) {
+    .site-footer [class^=col-] {
+      margin-bottom: 30px
+    }
+  }
+
+  @media (max-width:767px) {
+    .site-footer {
+      padding-bottom: 0
+    }
+
+    .site-footer .copyright-text,
+    .site-footer .social-icons {
+      text-align: center
+    }
+  }
+
+  .social-icons {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+  }
+
+  .social-icons li {
+    display: inline-block;
+    margin-bottom: 2px
+  }
+
+  .social-icons li.title {
+    margin-right: 15px;
+    text-transform: uppercase;
+    color: #96a2b2;
+    font-weight: 700;
+    font-size: 13px
+  }
+
+  .social-icons a {
+    background-color: #eceeef;
+    color: #818a91;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 44px;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    margin-right: 8px;
+    border-radius: 100%;
+    -webkit-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear
+  }
+
+  .social-icons a:active,
+  .social-icons a:focus,
+  .social-icons a:hover {
+    color: #fff;
+    background-color: #29aafe
+  }
+
+  .social-icons.size-sm a {
+    line-height: 34px;
+    height: 34px;
+    width: 34px;
+    font-size: 14px
+  }
+
+  .social-icons a.facebook:hover {
+    background-color: #3b5998
+  }
+
+  .social-icons a.twitter:hover {
+    background-color: #00aced
+  }
+
+  .social-icons a.linkedin:hover {
+    background-color: #007bb6
+  }
+
+  .social-icons a.dribbble:hover {
+    background-color: #ea4c89
+  }
+
+  @media (max-width:767px) {
+    .social-icons li.title {
+      display: block;
+      margin-right: 0;
+      font-weight: 600
+    }
+  }
+
+  
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #D3D3D3;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: black;
+}
+.anchors{
+  color=white;
+}
   {% block css %}
   {% endblock css %}
-  </style>
- 
-  <body>
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">GCoEA_Era</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% block orgactive %}
-          {% endblock orgactive %}" href="/recruitment">Recruitment</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% block studentactive %}
-          {% endblock studentactive %}" href="/student">Student login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% block aboutactive %}
-          {% endblock aboutactive %}" href="/about">About </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {% block contactactive %}
+</style>
+
+<body>
+
+  <header>
+    <a href="#" class="logo"> GCOEA Placement </a>
+    <ul>
+      <li>
+        <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page" href="/">Home</a>
+
+      </li>
+      <li>
+        <a class="nav-link {% block orgactive %}
+        {% endblock orgactive %}" href="/recruitment">Recruitment</a>
+      </li>
+        {% if user.is_authenticated %}
+      <li>
+        <a class="nav-link" href="/studentInfo">My profile</a>
+      </li>
+      {% else %}
+       <li>
+        <a class="nav-link" href="/student">Join us</a>
+      </li>
+      {% endif %}
+      <li>
+        <a class="nav-link {% block aboutactive %}
+        {% endblock aboutactive %}" href="/about">About </a>
+      </li>
+      <li>
+        <a class="nav-link {% block contactactive %}
           {% endblock contactactive %}" href="/contact">Contact </a>
-        </li>
+          </li>
+          {% if user.is_authenticated %}
+          <li>
+          <div class="dropdown">
+          <a class="anchors">
+            Welcome <span style="text-transform:capitalize">{{request.user}}</span>
+          </a>
+          <div class="dropdown-content">
+          <a class="mt-2" href="#" data-bs-target="#loginmodal" data-bs-toggle="modal"> <span  >Signin </span></a>
+            <a class="mt-2" href="#" data-bs-target="#signupmodal" data-bs-toggle="modal"> <span>Signup another</span></a>
+              <a class="text-danger mb-2"  href="/logout">Logout</a>
+          </div>
+            </div>
+          </li>
+         {% else %}
+          <li>
+          <div class="dropdown">
+          <a class="anchors">
+            Sign in
+          </a>
+          <div class="dropdown-content">
+          <a class="mt-2" href="#" data-bs-target="#loginmodal" data-bs-toggle="modal"> <span  >Signin </span></a>
+            <a class="my-2" href="#" data-bs-target="#signupmodal" data-bs-toggle="modal"> <span>Signup</span></a>
+          </div>
+            </div>
+          </li>
+          
+         {% endif %}
+    </ul>
+  </header>
+ <!-- log in Modal -->
+  <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginmodaltitle">Login here</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         
-      </ul>
+        </div>
+        <div class="modal-body">
+          <form action="/login" method="post">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="loginusername">Username</label>
+              <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="enter your username" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="loginpass">Password</label>
+              <input type="password" class="form-control" id="loginpass" name="loginpass" placeholder="enter your password" required>
+            </div>
+           
+           
+          <button style="float:right" type="submit" class="btn btn-primary mt-3">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
     </div>
   </div>
-</nav>
 
-{% block body %}
-{% endblock body %}
+<!--signup modal -->
+<div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="signupmodal" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="signupmodaltitle">Signup here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/signup" method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <label for="roll">Roll Id</label>
+              <input type="text" class="form-control" id="roll" name="roll" placeholder="college onRoll" required>
+            </div>
+            <div class="col-md-6">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" placeholder="choose it unique"
+                required>
+            </div>
+          </div>
+          <div class="row my-2">
+            <div class=" col-md-6">
+              <label for="fname">First Name</label>
+              <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" required>
+            </div>
+            <div class=" col-md-6">
+              <label for="lname">Last Name</label>
+              <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="row my-2">
+          <div class=" col-md-6">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+          </div>
+          <div class=" col-md-6">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="write with zip code"
+              required>
+          </div>
+          </div>
+          <div class="row my-2">
+           <div class=" col-md-6">
+            <label for="branch">Branch </label>
+            <input type="text" class="form-control" id="branch" name="branch" placeholder="write short form in bracket"
+              required>
+          </div>
+           <div class=" col-md-6">
+            <label for="mobile">Mobile </label>
+            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="enter without +"
+              required>
+          </div>
+          </div>
+          <div class="row my-2">
+           <div class=" col-md-6">
+            <label for="sem">Semester </label>
+            <input type="text" class="form-control" id="sem" name="sem" placeholder="write the current semester"
+              required>
+          </div>
+           <div class=" col-md-6">
+            <label for="cgpa">CGPA </label>
+            <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="enter the current cgpa"
+              required>
+          </div>
+          </div>
+          <div class="row mt-2">
+            <div class="form-group col-md-6">
+              <label for="pass1">Password</label>
+              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="choose your password"
+                required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="pass2">Confirm password</label>
+              <input type="password" class="form-control" id="pass2" name="pass2" placeholder="confirm your password"
+                required>
+            </div>
+          </div>
+          <button style="float:right" type="submit" class="btn btn-primary mt-2">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
- 
-    <!-- Optional JavaScript; choose one of the two! -->
+  {% block body %}
+  {% endblock body %}
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">It is an initiative to help the upcoming
+            programmers and students of our esteemed organization to get notified about various companies which are
+            coming to our college for campus placement. It also provide platform for the student where they will be
+            notified about their application applied to various organizations.</p>
+        </div>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    -->
-   
-  </body>
-  <script>
 
-{% block js %}
-{% endblock js %}
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+            <a href="#">GCOEA PLACEMENT</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    window.addEventListener("scroll", function () {
+      var jeader = document.querySelector("header");
+      jeader.classList.toggle("sticky", window.scrollY > 0);
+    })
+  </script>
+
+
+
+</body>
+<script>
+
+  {% block js %}
+
+  {% endblock js %}
 </script>
+
 </html>

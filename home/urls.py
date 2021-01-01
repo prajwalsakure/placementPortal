@@ -10,9 +10,10 @@ urlpatterns = [
     path('contact',views.contact,name='contact'),
     path('recruitment',views.recruitment,name='recruitment'),
     path('handleApplication',views.handleApplication),
+    path('removeApplication',views.removeApplication),
     path('<str:slug>/', views.blog, name='blog'),
     path('signup', views.handlesignup, name="handlesignup"),
     path('login', views.handlelogin, name="handlelogin"),
     path('logout', views.handlelogout, name='logout'),
-    path('studentInfo',views.studentInfo,name='studentInfo'),
+    path('studentInfo',views.studentInfo,name='studentInfo')
 ]

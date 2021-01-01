@@ -16,7 +16,8 @@ class Recruitment(models.Model):
     orgName=models.CharField(max_length=250)
     slug=models.CharField(max_length=100,default='')
     content=models.TextField()
-    user=models.ManyToManyField(User )
+    cgpareq=models.FloatField(null=True, blank=True, default=None)
+    user=models.ManyToManyField(User, blank=True, null=True)
     date=models.DateField()
     def __str__(self):
         return self.orgName
@@ -28,18 +29,15 @@ class Profile(models.Model):
     roll = models.IntegerField( blank=True)
     address=models.TextField()
     branch=models.TextField()
-    document=models.FileField(upload_to='resume',default='')
+    sem=models.IntegerField(null=True, blank=True, default=None)
+    mobile=models.IntegerField(null=True, blank=True, default=None)
+    cgpa=models.FloatField(null=True, blank=True, default=None)
     def __str__(self):
         return self.fname
 
-class Enrollment(models.Model):
-    recruiter=models.ForeignKey(Recruitment,on_delete=models.CASCADE)
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    date_applied=models.DateField()
 
-    class Meta:
-        unique_together=[['user','recruiter']]
 
+    # document=models.FileField(upload_to='resume/',default='')
     
 
     

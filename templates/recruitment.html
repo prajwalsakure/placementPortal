@@ -2,11 +2,23 @@
 {% block title %}
 recruitment news
 {% endblock title %}
-{% block orgactive %}active
-{% endblock orgactive %}
+
+
+
 {% block body %}
-<div class="container my-2">
-  <h2>These are the active rectruiters comming soon in the college </h2>
+
+
+<section style=" width: 100%; height: 100%;
+   background-color: #26272b;
+    padding-top: 85px;">
+  <br> <br>
+
+
+</section>
+
+<main class="container my-4">
+ 
+  <h2>These are the active rectruiters coming soon in the college </h2>
   {% for post in organisation reversed %}
   <div class="col my-3">
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -17,12 +29,21 @@ recruitment news
           <p class="card-text mb-auto">{{post.content|safe|truncatewords:70}}</p>
         </div>
         <a href="/{{post.slug}}" class="stretched-link">Continue reading</a>
-        
+
       </div>
     </div>
   </div>
+ 
   {% endfor %}
-</div>
+</main>
 
 
 {% endblock body %}
+{% block js %}
+
+  let previews = document.getElementsByClassName("preview");
+  Array.from(previews).forEach((element) => {
+    element.innerHTML = element.innerText;
+  })
+
+{% endblock js %}
