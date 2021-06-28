@@ -39,6 +39,86 @@ font-size: 14px;
 padding: 5px 10px;
 color: #000;
 }
+
+
+<!-- buttons -->
+.btn {
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+background-color: transparent;
+border: 2px solid #e74c3c;
+border-radius: 0.6em;
+color: #e74c3c;
+cursor: pointer;
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-align-self: center;
+-ms-flex-item-align: center;
+align-self: center;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1;
+margin: 20px;
+padding: 1.2em 2.8em;
+text-decoration: none;
+text-align: center;
+text-transform: uppercase;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+}
+.btn:hover, .btn:focus {
+color: #fff;
+outline: 0;
+}
+
+.first {
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.first:hover {
+box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+.fifth {
+  border-color: #8e44ad;
+  border-radius: 0;
+  color: #8e44ad;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  -webkit-transition: color 150ms ease-in-out;
+  transition: color 150ms ease-in-out;
+}
+.fifth:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: #8e44ad;
+  z-index: -1;
+  -webkit-transition: width 150ms ease-in-out;
+  transition: width 150ms ease-in-out;
+}
+.fifth:hover {
+  color: #fff;
+}
+.fifth:hover:after {
+  width: 110%;
+}
+
+
+
 {% endblock css %}
 {% block body %}
 <section style=" width: 100%; height: 100%;
@@ -55,7 +135,7 @@ color: #000;
 
   </button>
 </div>
-{% endfor %}  {% endcomment %}
+{% endfor %} {% endcomment %}
 <!-- Student Profile -->
 <div class="student-profile py-4">
   <form method="post">
@@ -82,7 +162,7 @@ color: #000;
               <h3 class="mb-0"></i>General Information</h3>
             </div>
             <div class="card-body pt-0 ">
-              <table class="table table-bordered" ">
+              <table class="table table-bordered">
                 <tr>
                   <th width="30%">Roll</th>
                   <td width="2%">:</td>
@@ -134,17 +214,20 @@ color: #000;
         <div class="card-header bg-transparent border-0">
           <h3 class="mb-0"><i class="far"></i>List of Companies applied </h3>
         </div>
-          {% for orgs in recruitment %}
+        {% for orgs in recruitment %}
         <div class="card-body pt-0 ">
           <table class="table table-bordered">
             <tr>
-              <th width="35%"><strong><a href="/{{orgs.slug}}" style="text-decoration:none"> {{orgs.orgName}} </a> </strong></th>
+              <th width="35%"><strong><a href="/{{orgs.slug}}" style="text-decoration:none"> {{orgs.orgName}} </a>
+                </strong></th>
               <td width="2%">:</td>
-              <td></td>
+              {% comment %} <td id="dateaaplied">  </td> {% endcomment %}
+              <td > {{date}} </td>
+              <!-- <td> {{orgs.date}} </td> -->
             </tr>
           </table>
         </div>
-         {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -157,37 +240,51 @@ color: #000;
           <h3 class="mb-0">List of Companies you may apply</h3>
         </div>
         <div class="card-body pt-0 ">
-           {% for org in orgs %}
-          
-           {% comment %} {% if {{org.cgpareq}}|floatformat:2 < 7 %} {% endcomment %}
-           
-          <table class="table table-bordered">
+          {% for org in orgs %}
+
+          {% comment %} {% if {{org.cgpareq}}|floatformat:2 < 7 %} {% endcomment %} <table class="table table-bordered">
             <tr>
-              <th width="20%"><strong><a href="/{{org.slug}}" style="text-decoration:none">{{org.orgName}}</a></strong></th>
+              <th width="20%"><strong><a href="/{{org.slug}}" style="text-decoration:none">{{org.orgName}}</a></strong>
+              </th>
               <td width="2%">:</td>
               <td width="30%">Last Date to apply : {{org.date}}</td>
 
-              <td width="10%"> 
-              <form action="/handleApplication" method="post">
-          {% csrf_token %}
-          <input type="hidden" name="sno" value="{{org.sno}}">
-          <button type="submit"> apply </button>
-        </form></td>
               <td width="10%">
-              <form action="/removeApplication" method="post">
-          {% csrf_token %}
-          <input type="hidden" name="sno" value="{{org.sno}}">
-          <button> cancel</button>
-        </form></td>
+                <form action="/handleApplication" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="sno" value="{{org.sno}}">
+                  <!-- <button type="submit"> apply </button> -->
+
+                  <button class="btn fifth" type="submit">apply</button>
+                </form>
+              </td>
+              <td width="10%">
+                <form action="/removeApplication" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="sno" value="{{org.sno}}">
+                  <button class="btn first">Cancel</button>
+                  <!-- <button> cancel</button> -->
+                </form>
+              </td>
             </tr>
-          </table>
-          {% comment %} {% endif %} {% endcomment %}
-         {% endfor %}
+            </table>
+            {% comment %} {% endif %} {% endcomment %}
+            {% endfor %}
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<script>
+  var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
-          {% endblock body %}
+today = mm + '/' + dd + '/' + yyyy;
+// document.write(today);
+ var ii=document.getElementById("dateaaplied");
+ii.innerHTML ="Date Applied : "+today; 
+</script>
+{% endblock body %}

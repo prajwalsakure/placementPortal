@@ -5,12 +5,105 @@
 home
 {% endblock title %}
 
-
 {%block css %}
+
+
+.services-section{
+<!-- background: url("/static/bg.jpg"); -->
+background-size: cover;
+padding: 60px 0;
+}
+.inner-width{
+width: 100%;
+max-width: 1200px;
+margin: auto;
+padding: 0 20px;
+overflow: hidden;
+}
+.section-title{
+text-align: center;
+color: #ddd;
+text-transform: uppercase;
+font-size: 30px;
+}
+.border{
+width: 160px;
+height: 2px;
+background: #82ccdd;
+margin: 40px auto;
+}
+.services-container{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.service-box{
+max-width: 33.33%;
+padding: 10px;
+text-align: center;
+color: #ddd;
+cursor: pointer;
+}
+
+.service-icon{
+display: inline-block;
+width: 70px;
+height: 70px;
+border: 3px solid #82ccdd;
+color: #82ccdd;
+transform: rotate(45deg);
+margin-bottom: 30px;
+margin-top: 16px;
+transition: 0.3s linear;
+}
+.service-icon i{
+line-height: 70px;
+transform: rotate(-45deg);
+font-size: 26px;
+}
+.service-box:hover .service-icon{
+background: #82ccdd;
+color: #ddd;
+}
+.service-title{
+font-size: 18px;
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+.service-desc{
+font-size: 14px;
+}
+
+@media screen and (max-width:960px) {
+.service-box{
+max-width: 45%;
+}
+}
+
+@media screen and (max-width:768px) {
+.service-box{
+max-width: 50%;
+}
+}
+
+@media screen and (max-width:480px) {
+.service-box{
+max-width: 100%;
+}
+}
+
 
 
 
 {% endblock css %}
+
+{% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+{% endblock head %}
+
 {% block homeactive %}active
 {% endblock homeactive %}
 {% block body %}
@@ -21,15 +114,11 @@ width: 100%;
 height: 100vh;
 background: url(/static/job.jpg);
 background-size: cover; margin-bottom: 1cm;">
-  <!-- <div style="position: relative;
-top: 40%;
-font-size:8ch;
-color: #fff;
-font-family:Peyo;
-left: 30%;">
-    PLACEMENT PORTAL
-  </div> -->
+ 
 </section>
+
+
+
 
 <main role="main">
 
@@ -47,8 +136,8 @@ left: 30%;">
       <div class="row featurette" style="back">
         <div class="col-md-10">
           <h2 class="featurette-heading"><a href="/{{post.slug}}" style="text-decoration:none">{{post.orgName}}</a></h2>
-         <div class="preview">
-          <p class="lead"> {{post.content|safe|truncatewords:70}} </p>
+          <div class="preview">
+            <p class="lead"> {{post.content|truncatewords:60}} </p>
           </div>
           <a href="/{{post.slug}}"> read more</a>
         </div>
@@ -56,9 +145,68 @@ left: 30%;">
       <hr class="featurette-divider">
       {% endfor %}
     </div>
-    </div>
+  </div>
+  
 </main>
 
+
+<section style="margin-top: 1cm;">
+  <div class="services-section" 
+  style="background-image: url(/static/bg.jpg);"
+  > 
+  <div class="inner-width">
+    <h1 class="section-title">Our Services</h1>
+    <div class="border"></div>
+    <div class="services-container">
+
+      <div class="service-box">
+        <div class="service-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="service-title">CGPA based applying</div>
+        <div class="service-desc">
+      You can apply to those compaines only if you are eligible </div>
+      </div>
+
+      <div class="service-box">
+        <div class="service-icon">
+          <i class="fas fa-brush"></i>
+        </div>
+        <div class="service-title">One tap apply</div>
+        <div class="service-desc">
+     You can apply to company on 1 click </div> </div>
+
+     
+
+      <div class="service-box">
+        <div class="service-icon">
+          <i class="fas fa-database"></i>
+        </div>
+        <div class="service-title">Big Opportunities</div>
+        <div class="service-desc">
+       All the compaines coming to college will display their requirements here </div>
+      </div>
+
+      <div class="service-box">
+        <div class="service-icon">
+          <i class="fab fa-android"></i>
+        </div>
+        <div class="service-title">Responsive team</div>
+        <div class="service-desc">
+          We will solve your all the queries as soon as possible.  </div>
+     
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -67,9 +215,9 @@ left: 30%;">
 {% endblock body %}
 {% block js %}
 
-  let previews = document.getElementsByClassName("preview");
-  Array.from(previews).forEach((element) => {
-    element.innerHTML = element.innerText;
-  })
+let previews = document.getElementsByClassName("preview");
+Array.from(previews).forEach((element) => {
+element.innerHTML = element.innerText;
+})
 
 {% endblock js %}

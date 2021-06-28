@@ -59,6 +59,7 @@ def removeApplication(request):
         post.user.remove(user)
         post.save()
     return redirect('studentInfo')
+        
 
 def handlesignup(request):
     if request.method=='POST':
